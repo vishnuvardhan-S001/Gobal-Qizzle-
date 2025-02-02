@@ -1,0 +1,70 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+#define MAX_QUESTIONS 5
+
+// Structure to store quiz questions
+typedef struct {
+    char question[256];
+    char options[4][100];
+    char correct_option;
+} QuizQuestion;
+
+// Function to display a question and get the user's answer
+char ask_question(QuizQuestion q) {
+    printf("%s\n", q.question);
+    for (int i = 0; i < 4; i++) {
+        printf("%c) %s\n", 'A' + i, q.options[i]);
+    }
+    
+    char answer;
+    printf("Your answer: ");
+    scanf(" %c", &answer);
+    return answer;
+}
+
+int main() {
+    // Array of quiz questions
+    QuizQuestion quiz[MAX_QUESTIONS] = {
+        {"Which is the largest continent?", {"Africa", "Asia", "Europe", "Australia"}, 'B'},
+        {"What is the capital of Canada?", {"Toronto", "Ottawa", "Vancouver", "Montreal"}, 'B'},
+        {"Which ocean is the deepest?", {"Atlantic", "Indian", "Arctic", "Pacific"}, 'D'},
+        {"What is the smallest country in the world?", {"Monaco", "Vatican City", "Malta", "San Marino"}, 'B'},
+        {"Which desert is the largest?", {"Gobi", "Sahara", "Kalahari", "Antarctic"}, 'D'}
+    };
+    
+    int score = 0;
+    
+    printf("\n*** Welcome to Global Quizzle! ***\n\n");
+    
+    // Loop through all questions
+    for (int i = 0; i < MAX_QUESTIONS; i++) {
+        char user_answer = ask_question(quiz[i]);
+        
+        // Convert lowercase to uppercase if needed
+        if (user_answer >= 'a' && user_answer <= 'd') {
+            user_answer -= 32;
+        }
+        
+        // Check if answer is correct
+        if (user_answer == quiz[i].correct_option) {
+            printf("Correct! 🎉\n\n");
+            score++;
+        } else {
+            printf("Wrong! The correct answer was %c.\n\n", quiz[i].correct_option);
+        }
+    }
+    
+    // Display final score
+    printf("Your final score: %d/%d\n", score, MAX_QUESTIONS);
+    if (score == MAX_QUESTIONS) {
+        printf("Amazing! You're a geography genius! 🌍\n");
+    } else if (score >= 3) {
+        printf("Good job! Keep learning! 📚\n");
+    } else {
+        printf("Better luck next time! 🌎\n");
+    }
+    
+    return 0;
+}
