@@ -1,0 +1,47 @@
+Global Quizzle
+
+Overview
+
+Global Quizzle is a simple C program that tests your knowledge of world geography through a multiple-choice quiz. Answer questions correctly to increase your score!
+
+Features
+
+Five multiple-choice questions about world geography
+
+User-friendly input system
+
+Automatic score calculation with feedback
+
+How to Run
+
+Clone or download this repository.
+
+Open a terminal and navigate to the directory.
+
+Compile the program using:
+
+gcc global_quizzle.c -o quizzle
+
+Run the program:
+
+./quizzle
+
+Example Questions
+
+"Which is the largest continent?"
+
+A) Africa
+
+B) Asia
+
+C) Europe
+
+D) Australia
+
+Contributing
+
+Feel free to fork this repository and add more questions or features!
+
+License
+
+This project is open-source under the MIT License.
